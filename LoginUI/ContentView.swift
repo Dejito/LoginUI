@@ -12,18 +12,19 @@ struct ContentView: View {
     @State var phoneNumber: String = ""
     @State var pin: String = ""
     @State var isPinVisible = false
+    let screenWidth = UIScreen.main.bounds.size.width
 
     
     var body: some View {
         
         ZStack {
-//            Color.white.ignoresSafeArea()
-
+            //            Color.white.ignoresSafeArea()
+            
             Image("background")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
+            VStack(alignment: .center){
                 Image("kegow_logo")
                     .resizable()
                     .scaledToFit()
@@ -31,16 +32,57 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                 VStack(alignment: .leading) {
                     
-                    HStack {
-                        Text("Log In")
-                            .font(.system(size: 20).weight(.bold))
-                        Spacer()
-                    }
-                   
                     Spacer().frame(height: 10)
+                    //                    HStack {
+                    Text("Log In")
+                        .font(.system(size: 22).weight(.bold))
+                        .frame(height: 0)
+
+                    
+//                    Spacer().frame(height: 0)
                     Text("Log in to your account")
-                        .font(.system(size: 16).weight(.bold))
-                        .foregroundColor(.gray).frame(height: 50)
+                        .font(.system(size: 16).weight(.semibold))
+                        .foregroundColor(.gray).frame(height: 40)
+                    
+                    
+                    Spacer().frame(height: 20)
+                    
+                    Text("Phone Number")
+                        .foregroundColor(.gray)
+                        .frame(height: 20)
+
+                    
+                    HStack {
+                        Image("visibility-off")
+                            .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
+                        
+                        TextField(
+                            "Phone number",
+                            text: $phoneNumber
+                        )
+                        .padding([.horizontal],12)
+                        //                        .frame(height: 50)
+                        
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            self.isPinVisible = !isPinVisible
+                            print("work in poetry \(isPinVisible)")
+                        }) {
+                            Image("visibility-off")
+                                .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
+                            
+                        }
+                        
+                    }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
+                        .padding(.bottom, 12)
+                    
+                    
+                    
+                    Text("PIN")
+                        .foregroundColor(.gray)
+                        .frame(height: 20)
                     
                     if isPinVisible {
                         HStack
@@ -53,14 +95,14 @@ struct ContentView: View {
                                 text: $pin
                             )
                             .padding([.horizontal],12)
-    //                        .frame(height: 50)
-                           
+                            //                        .frame(height: 50)
+                            
                             
                             Spacer()
                             
                             Button(action: {
                                 self.isPinVisible = !isPinVisible
-                               print("work in poetry \(isPinVisible)")
+                                print("work in poetry \(isPinVisible)")
                             }) {
                                 Image("visibility-off")
                                     .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
@@ -70,124 +112,71 @@ struct ContentView: View {
                         }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
                     } else {
                         HStack(alignment: .center) {
-                            SecureField("", text: $pin)
+                            SecureField("PIN", text: $pin)
                                 .padding([.horizontal],12)
-
+                            
                             Button(action: {
                                 self.isPinVisible = !isPinVisible
-                               print("work in poetry \(isPinVisible)")
+                                print("work in poetry \(isPinVisible)")
                             }) {
                                 Image("visibility-off")
                                     .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
                                 
                             }
                         }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
-                    }
-           
                         
-                    
-                    
-//                    HStack(alignment: .center){
-//                        SecureField("", text: $password.max(4))
-//                            .placeholder(when: password.isEmpty) {
-//                                  Text("PIN").foregroundColor(Color(ColorStrings.grey_888888))
-//                          }
-//                            .foregroundColor(Color(ColorStrings.grey_888888))
-//                            .textContentType(.password)
-//                            .keyboardType(.default)
-//                            .frame(height: 48)
-//                            .textFieldStyle(PlainTextFieldStyle())
-//                            .padding([.horizontal], 12)
-//                            .cornerRadius(4)
-//
-//                        Image(systemName: "eye.slash")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 20)
-//                            .foregroundColor(Color(ColorStrings.grey_888888))
-//                            .padding(.horizontal).onTapGesture {
-//                                isSecured.toggle()
-//                            }
-//                    }.frame(width: UIScreen.main.bounds.width - 32, height: 52)
-//                        .cornerRadius(6)
-//                        .overlay(RoundedRectangle(cornerRadius: 6)
-//                            .stroke(Color(ColorStrings.grey_888888), lineWidth: 1))
-
+                        HStack(alignment: .center) {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                Text("Forgot PIN?")
+                                
+                                    .foregroundColor(.green)
+                                    .font(.system(size: 14).weight(.bold))
+                                    .onTapGesture {}
+                                    .padding()
+                            }
+                            Spacer()
+                        }
                         
-                    
-                    
-                    
-                    
-//                    HStack(alignment: .center){
-//                        Image(ImageStrings.nigeria_flag)
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 20)
-//                            .padding(.horizontal)
-//
-//                        TextField("", text: $phoneNumber.max(11))
-//                            .placeholder(when: phoneNumber.isEmpty) {
-//                                  Text("Phone Number").foregroundColor(Color(ColorStrings.grey_888888))
-//                          }
-//                            .foregroundColor(Color(ColorStrings.grey_888888))
-//                            .textContentType(.telephoneNumber)
-//                            .keyboardType(.default)
-//                            .frame(height: 48)
-//                            .textFieldStyle(PlainTextFieldStyle())
-//                            .padding([.horizontal], 12)
-//
-//
-//
-//
-//                    }.frame(width: screenWidth - 32, height: 52)
-//                        .cornerRadius(6)
-//                        .overlay(RoundedRectangle(cornerRadius: 6)
-//                            .stroke(Color(ColorStrings.grey_888888), lineWidth: 1))
-                    
-//                    TextField("worldwide", text: $username)
-////                .foregroundColor(.clear)
-//                .background(.clear)
-//                .textContentType(UITextContentType.addressCity)
-//                        .keyboardType(.default)
-//                        .frame(height: 56)
-//                        .textFieldStyle(PlainTextFieldStyle())
-//                        .padding([.horizontal], 12)
-//                        .cornerRadius(18)
-//                        .overlay(RoundedRectangle(cornerRadius: 8))
-                    
-//                    Text(username
-                    
-//                    @State private var username: String = ""
-//                    @FocusState private var emailFieldIsFocused: Bool = false
-//
-//                    var body: some View {
-//                        TextField(
-//                            "User name (email address)",
-//                            text: $username
-//                        )
-//                        .focused($emailFieldIsFocused)
-//                        .onSubmit {
-//                            validate(name: username)
-//                        }
-//                        .textInputAutocapitalization(.never)
-//                        .disableAutocorrection(true)
-//                        .border(.secondary)
-//
-//                        Text(username)
-//                            .foregroundColor(emailFieldIsFocused ? .red : .blue)
-//                    }
-                    
-                    
+                        Button(action: { }){
+                            Text("Login")
+                                .foregroundColor(.white)
+                                .font(.system(size: 14))
+                                .fontWeight(.bold)
+                                .frame(width: screenWidth , height: 52, alignment: .center)
+                                .padding(.horizontal, -14)
+                        }
+                        .background(.green)
+                        .foregroundColor(Color.white)
+                        .cornerRadius(6)
+                        
+                
+                        
+                        HStack(alignment: .center) {
+                            Spacer()
+                                Text("Don’t have an account? ")
+                                .font(.system(size: 14))
+                                Text("Sign Up")
+                                .font(.system(size: 14).weight(.semibold))
+                                .foregroundColor(.green)
                             Spacer()
 
+                        }.padding(.vertical, 20)
+                        
+                    Image("")
+
+                        
+                    }
                     
+                    Spacer()
                 }.padding(.top, 20)
                     .padding(.leading, 16)
                     .padding(.bottom, 16)
                     .padding(.trailing, 16)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                      .background(Color.white)
-
+                    .background(Color.white)
+                
+                
             }
         }
     }
