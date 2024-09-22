@@ -150,7 +150,17 @@ struct ContentView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(6)
                         
-                
+                        DividerWithText()
+                            .padding(.vertical, 10)
+
+                        
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Image("biometric")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                            Spacer()
+                        }
                         
                         HStack(alignment: .center) {
                             Spacer()
@@ -163,7 +173,15 @@ struct ContentView: View {
 
                         }.padding(.vertical, 20)
                         
-                    Image("")
+                        
+                       
+                        HStack {
+                            Spacer()
+                            Image("intercom")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+
+                        }
 
                         
                     }
@@ -183,7 +201,26 @@ struct ContentView: View {
 }
 
 
+struct DividerWithText: View {
 
+    var body: some View {
+        HStack {
+            line
+            Text("or log in with")
+                .foregroundColor(.gray)
+                .font(.caption)
+                .padding(.horizontal, 5)
+            line
+        }
+    }
+
+    var line: some View {
+        VStack {
+            Divider()
+                .background(Color.gray)
+        }
+    }
+}
 
 
 
