@@ -25,6 +25,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 KegowLogo()
                 VStack(alignment: .leading) {
+                    
                     Group {
                         Spacer().frame(height: 15)
                         Text("Log In")
@@ -64,78 +65,78 @@ struct ContentView: View {
                         PinTextField(
                             isPinVisible: isPinVisible, pin: pin
                         )
-                    }
+                    } //1st group
              
                     
-//                        HStack(alignment: .center) {
-//                            Spacer()
-//                            VStack(alignment: .center) {
-//                                Text("Forgot PIN?")
-//
-//                                    .foregroundColor(.green)
-//                                    .font(.system(size: 14).weight(.bold))
-//                                    .onTapGesture {}
-//                                    .padding()
-//                            }
-//                            Spacer()
-//                        }
-//
-//                        Button(action: { }){
-//                            Text("Login")
-//                                .foregroundColor(.white)
-//                                .font(.system(size: 14))
-//                                .fontWeight(.bold)
-//                                .frame(width: screenWidth , height: 52, alignment: .center)
-//                                .padding(.horizontal, -14)
-//                        }
-//                        .background(.green)
-//                        .foregroundColor(Color.white)
-//                        .cornerRadius(6)
-//
-//                        DividerWithText()
-//                            .padding(.vertical, 10)
-//
-//
-//                        HStack(alignment: .center) {
-//                            Spacer()
-//                            Image("biometric")
-//                                .resizable()
-//                                .frame(width: 55, height: 55)
-//                            Spacer()
-//                        }
-//
-//                        HStack(alignment: .center) {
-//                            Spacer()
-//                                Text("Don’t have an account? ")
-//                                .font(.system(size: 14))
-//                                Text("Sign Up")
-//                                .font(.system(size: 14).weight(.semibold))
-//                                .foregroundColor(.green)
-//                            Spacer()
-//
-//                        }.padding(.vertical, 20)
-//
-//
-//
-//                        HStack {
-//                            Spacer()
-//                            Image("intercom")
-//                                .resizable()
-//                                .frame(width: 50, height: 50)
-//
-//                        }
-//
-//
-//                    }
-//
+                    Group  {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                Text("Forgot PIN?")
+
+                                    .foregroundColor(.green)
+                                    .font(.system(size: 14).weight(.bold))
+                                    .onTapGesture {}
+                                    .padding()
+                            }
+                        }
+
+                        Button(action: { }){
+                            Text("Login")
+                                .foregroundColor(.white)
+                                .font(.system(size: 14))
+                                .fontWeight(.bold)
+                                .frame(width: screenWidth , height: 52, alignment: .center)
+                                .padding(.horizontal, -14)
+                        }
+                        .background(.green)
+                        .foregroundColor(Color.white)
+                        .cornerRadius(6)
+
+                        DividerWithText()
+                            .padding(.vertical, 10)
+
+
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Image("biometric")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                            Spacer()
+                        }
+
+                        HStack(alignment: .center) {
+                            Spacer()
+                                Text("Don’t have an account? ")
+                                .font(.system(size: 14))
+                                Text("Sign Up")
+                                .font(.system(size: 14).weight(.semibold))
+                                .foregroundColor(.green)
+                            Spacer()
+
+                        }.padding(.vertical, 20)
+
+                        HStack {
+                            Spacer()
+                            Image("intercom")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+
+                        }
+                    
+         
+
+
+                    }
+
                     Spacer()
                 }
                 .padding(16)
                     .padding([.horizontal, .leading, .trailing], 12)
 ////                    .padding(.top, 20)
-////                    .padding(.leading, 16)
+                    .padding(.leading, 16)
 ////                    .padding(.bottom, 16)
-////                    .padding(.trailing, 16)
+                    .padding(.trailing, 16)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.white)
 ////                    .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))                    //this is where you'd apply rounded corner curve  to
