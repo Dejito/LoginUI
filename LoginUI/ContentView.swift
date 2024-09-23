@@ -22,29 +22,29 @@ struct ContentView: View {
             Image("background")
                 .resizable().aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
-//
+////
             VStack(alignment: .leading) {
-                
-                KegowLogo()
-                
-                VStack(alignment: .leading) {
 //
+                KegowLogo()
+//
+                VStack(alignment: .leading) {
+////
                     Spacer().frame(height: 15)
-                    
-//                    //                    HStack {
+//
+//                    HStack {
                     Text("Log In")
                         .font(.system(size: 22).weight(.bold))
                         .frame(height: 0)
-//
-//
-////                    Spacer().frame(height: 0)
+////
+////
+//////                    Spacer().frame(height: 0)
                     Text("Log in to your account")
                         .font(.system(size: 16).weight(.semibold))
                         .foregroundColor(.gray).frame(height: 40)
-//
-//
+////
+////
                     Spacer().frame(height: 20)
-//
+////
                     Text("Phone Number")
                         .foregroundColor(.gray)
                         .frame(height: 20)
@@ -59,58 +59,17 @@ struct ContentView: View {
                             text: $phoneNumber
                         )
                         .padding([.horizontal], 5)
-                    
+
 
                     }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
                         .padding(.bottom, 12)
-//
-//
-//
-//                    Text("PIN")
-//                        .foregroundColor(.gray)
-//                        .frame(height: 20)
-//
-//                    if isPinVisible {
-//                        HStack
-//                        {
-//                            Image("visibility-off")
-//                                .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
-//
-//                            TextField(
-//                                "na gaskia",
-//                                text: $pin
-//                            )
-//                            .padding([.horizontal],12)
-//                            //                        .frame(height: 50)
-//
-//
-//                            Spacer()
-//
-//                            Button(action: {
-//                                self.isPinVisible = !isPinVisible
-//                                print("work in poetry \(isPinVisible)")
-//                            }) {
-//                                Image("visibility-off")
-//                                    .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
-//
-//                            }
-//
-//                        }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
-//                    } else {
-//                        HStack(alignment: .center) {
-//                            SecureField("PIN", text: $pin)
-//                                .padding([.horizontal],12)
-//
-//                            Button(action: {
-//                                self.isPinVisible = !isPinVisible
-//                                print("work in poetry \(isPinVisible)")
-//                            }) {
-//                                Image("visibility-off")
-//                                    .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
-//
-//                            }
-//                        }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
-//
+
+
+
+                    Text("PIN")
+                        .foregroundColor(.gray)
+                        .frame(height: 20)
+
 //                        HStack(alignment: .center) {
 //                            Spacer()
 //                            VStack(alignment: .center) {
@@ -176,19 +135,68 @@ struct ContentView: View {
                 }
                 .padding(16)
                     .padding([.horizontal, .leading, .trailing], 12)
-//                    .padding(.top, 20)
-//                    .padding(.leading, 16)
-//                    .padding(.bottom, 16)
-//                    .padding(.trailing, 16)
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+////                    .padding(.top, 20)
+////                    .padding(.leading, 16)
+////                    .padding(.bottom, 16)
+////                    .padding(.trailing, 16)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.white)
-//                    .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))                    //this is where you'd apply rounded corner curve  to
-//
+////                    .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))                    //this is where you'd apply rounded corner curve  to
+////
             }
         }
     }
 }
 
+
+struct PinTextField: View {
+    @State var isPinVisible: Bool
+    @State var pin: String
+    
+    var body: some View {
+        if isPinVisible {
+            HStack
+            {
+                Image("visibility-off")
+                    .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
+
+                TextField(
+                    "na gaskia",
+                    text: $pin
+                )
+                .padding([.horizontal],12)
+                //                        .frame(height: 50)
+
+
+                Spacer()
+
+                Button(action: {
+                    self.isPinVisible = !isPinVisible
+                    print("work in poetry \(isPinVisible)")
+                }) {
+                    Image("visibility-off")
+                        .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
+
+                }
+
+            }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
+        } else {
+            HStack(alignment: .center) {
+                SecureField("PIN", text: $pin)
+                    .padding([.horizontal],12)
+
+                Button(action: {
+                    self.isPinVisible = !isPinVisible
+                    print("work in poetry \(isPinVisible)")
+                }) {
+                    Image("visibility-off")
+                        .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
+
+                }
+            }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
+
+    }
+}
 
 struct DividerWithText: View {
 
