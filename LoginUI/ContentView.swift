@@ -74,7 +74,7 @@ struct ContentView: View {
                             VStack(alignment: .center) {
                                 Text("Forgot PIN?")
 
-                                    .foregroundColor(.green)
+                                    .foregroundColor(Color(UIColor(red: 148/255, green: 196/255, blue: 61/255, alpha: 1.0)))
                                     .font(.system(size: 14).weight(.bold))
                                     .onTapGesture {}
                                     .padding()
@@ -89,8 +89,8 @@ struct ContentView: View {
                                 .frame(width: screenWidth , height: 52, alignment: .center)
                                 .padding(.horizontal, -14)
                         }
-                        .background(.green)
-                        .foregroundColor(Color.white)
+                        .background(Color(UIColor(red: 148/255, green: 196/255, blue: 61/255, alpha: 1.0)))
+                        .foregroundColor(Color(UIColor(red: 148/255, green: 196/255, blue: 61/255, alpha: 1.0)))
                         .cornerRadius(6)
 
                         DividerWithText()
@@ -111,7 +111,7 @@ struct ContentView: View {
                                 .font(.system(size: 14))
                                 Text("Sign Up")
                                 .font(.system(size: 14).weight(.semibold))
-                                .foregroundColor(.green)
+                                .foregroundColor(Color(UIColor(red: 148/255, green: 196/255, blue: 61/255, alpha: 1.0)))
                             Spacer()
 
                         }.padding(.vertical, 20)
