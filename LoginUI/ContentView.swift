@@ -22,54 +22,51 @@ struct ContentView: View {
             Image("background")
                 .resizable().aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
-////
             VStack(alignment: .leading) {
-//
                 KegowLogo()
-//
                 VStack(alignment: .leading) {
-////
-                    Spacer().frame(height: 15)
-//
-//                    HStack {
-                    Text("Log In")
-                        .font(.system(size: 22).weight(.bold))
-                        .frame(height: 0)
-////
-////
-//////                    Spacer().frame(height: 0)
-                    Text("Log in to your account")
-                        .font(.system(size: 16).weight(.semibold))
-                        .foregroundColor(.gray).frame(height: 40)
-////
-////
-                    Spacer().frame(height: 20)
-////
-                    Text("Phone Number")
-                        .foregroundColor(.gray)
-                        .frame(height: 20)
-//
-//
-                    HStack {
-                        Image("phone_icon")
-                            .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.leading, 12)
+                    Group {
+                        Spacer().frame(height: 15)
+                        Text("Log In")
+                            .font(.system(size: 22).weight(.bold))
+                            .frame(height: 0)
 
-                        TextField(
-                            "Phone number",
-                            text: $phoneNumber
+                        Text("Log in to your account")
+                            .font(.system(size: 16).weight(.semibold))
+                            .foregroundColor(.gray).frame(height: 40)
+
+                        Spacer().frame(height: 20)
+                        Text("Phone Number")
+                            .foregroundColor(.gray)
+                            .frame(height: 20)
+    //
+    //
+                        HStack {
+                            Image("phone_icon")
+                                .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.leading, 12)
+
+                            TextField(
+                                "Phone number",
+                                text: $phoneNumber
+                            )
+                            .padding([.horizontal], 5)
+
+
+                        }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
+                            .padding(.bottom, 12)
+
+
+
+                        Text("PIN")
+                            .foregroundColor(.gray)
+                            .frame(height: 20)
+
+                        PinTextField(
+                            isPinVisible: isPinVisible, pin: pin
                         )
-                        .padding([.horizontal], 5)
-
-
-                    }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
-                        .padding(.bottom, 12)
-
-
-
-                    Text("PIN")
-                        .foregroundColor(.gray)
-                        .frame(height: 20)
-
+                    }
+             
+                    
 //                        HStack(alignment: .center) {
 //                            Spacer()
 //                            VStack(alignment: .center) {
@@ -159,86 +156,87 @@ struct PinTextField: View {
             {
                 Image("visibility-off")
                     .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
-
+                
                 TextField(
                     "na gaskia",
                     text: $pin
                 )
                 .padding([.horizontal],12)
                 //                        .frame(height: 50)
-
-
+                
+                
                 Spacer()
-
+                
                 Button(action: {
                     self.isPinVisible = !isPinVisible
                     print("work in poetry \(isPinVisible)")
                 }) {
                     Image("visibility-off")
                         .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
-
+                    
                 }
-
+                
             }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
         } else {
             HStack(alignment: .center) {
                 SecureField("PIN", text: $pin)
                     .padding([.horizontal],12)
-
+                
                 Button(action: {
                     self.isPinVisible = !isPinVisible
                     print("work in poetry \(isPinVisible)")
                 }) {
                     Image("visibility-off")
                         .resizable().aspectRatio(contentMode: .fit).frame(height: 20).padding(.horizontal, 12)
-
+                    
                 }
             }.frame(height: 50) .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray))
-
-    }
-}
-
-struct DividerWithText: View {
-
-    var body: some View {
-        HStack {
-            line
-            Text("or log in with")
-                .foregroundColor(.gray)
-                .font(.caption)
-                .padding(.horizontal, 5)
-            line
-        }
-    }
-
-    var line: some View {
-        VStack {
-            Divider()
-                .background(Color.gray)
+            
         }
     }
 }
-
-
-
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-struct KegowLogo: View {
-    var body: some View {
-        HStack {
-            Spacer()
-            Image("kegow_logo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 250, height: 150)
-                .aspectRatio(contentMode: .fit)
-            Spacer()
+    struct DividerWithText: View {
+        
+        var body: some View {
+            HStack {
+                line
+                Text("or log in with")
+                    .foregroundColor(.gray)
+                    .font(.caption)
+                    .padding(.horizontal, 5)
+                line
+            }
+        }
+        
+        var line: some View {
+            VStack {
+                Divider()
+                    .background(Color.gray)
+            }
         }
     }
-}
+    
+    
+    
+    
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
+    }
+    
+    struct KegowLogo: View {
+        var body: some View {
+            HStack {
+                Spacer()
+                Image("kegow_logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 250, height: 150)
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+            }
+        }
+    }
+
